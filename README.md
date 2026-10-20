@@ -69,7 +69,6 @@ pnpm run start
 
 ### Creating a Diagram
 
-- And more...
 1. **Add Assets** - Drag assets from the left panel onto the canvas
 2. **Connect Nodes** - Click and drag from one node's handle to another to create connections
 3. **Edit Properties** - Click any node or edge to edit its properties in the right panel
