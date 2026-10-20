@@ -70,7 +70,7 @@ pnpm run start
 ### Creating a Diagram
 
 1. **Add Assets** - Drag assets from the left panel onto the canvas
-2. **Connect Nodes** - Click and drag from one node's handle to another to create connections
+2. **Connect Nodes** - Drag from any of a node's four handles (top, right, bottom, left) to a handle on another node; the connection points from where you started dragging. Use the eye button in a connection's hover toolbar to hide its technique box and keep it as a plain link
 3. **Edit Properties** - Click any node or edge to edit its properties in the right panel
 4. **Set Criticality** - Mark assets as Low, Medium, High, or Critical
 5. **Mark Compromised** - Toggle the compromised status on affected assets
@@ -92,6 +92,8 @@ Connections between nodes can be labeled with MITRE ATT&CK-aligned actions:
 - Defense Evasion, Credential Access, Discovery, Lateral Movement
 - Collection, Command & Control, Exfiltration, Impact
 - And more...
+
+Use the **Other** action type for links that aren't an attack technique, such as an AnyDesk session. It shows an (i) icon, its title is a name you choose (double-click the title, use the pencil button in the connection's toolbar, or edit **Name** in the Properties panel), and choosing it turns on the description so you can explain the link. The name also appears in the timeline, presentation playback, and PDF report.
 
 ### Keyboard Shortcuts
 

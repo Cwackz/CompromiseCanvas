@@ -109,6 +109,7 @@ export type EdgeActionType =
   | "Social Engineering"
   | "Physical Access"
   | "Supply Chain Attack"
+  // Free-form descriptive link (e.g. "AnyDesk session"); its name is the edge label.
   | "Other"
 
 export const EDGE_ACTION_TYPES: EdgeActionType[] = [

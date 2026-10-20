@@ -1,7 +1,7 @@
 "use client"
 
 import { Fragment } from "react"
-import { Trash2, Tag, Check, Lock, LockOpen, Plus, X } from "lucide-react"
+import { Trash2, Tag, Check, Lock, LockOpen, Plus, X, Eye, EyeOff, Pencil } from "lucide-react"
 import { EdgeToolbar as XYEdgeToolbar } from "@xyflow/react"
 import { Button } from "@/components/ui/button"
 import {
@@ -35,8 +35,12 @@ interface EdgeToolbarProps {
   currentActionTypes: EdgeActionType[]
   allowsMultipleActionTypes?: boolean
   unlocked?: boolean
+  labelBoxVisible?: boolean
+  canRename?: boolean
+  onRename?: () => void
   onSetActionTypes: (actionTypes: EdgeActionType[]) => void
   onToggleUnlocked: () => void
+  onToggleLabelBox: () => void
   onDelete: () => void
   onMouseEnter?: () => void
   onMouseLeave?: () => void
@@ -58,8 +62,12 @@ export default function EdgeToolbar({
   currentActionTypes,
   allowsMultipleActionTypes = false,
   unlocked,
+  labelBoxVisible = true,
+  canRename = false,
+  onRename,
   onSetActionTypes,
   onToggleUnlocked,
+  onToggleLabelBox,
   onDelete,
   onMouseEnter,
   onMouseLeave,
@@ -99,6 +107,34 @@ export default function EdgeToolbar({
       >
         {unlocked ? <LockOpen className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
       </Button>
+      <Button
+        type="button"
+        size="icon"
+        variant="ghost"
+        className={cn(
+          "h-7 w-7 hover:bg-gray-700",
+          labelBoxVisible ? "text-gray-300 hover:text-white" : "text-amber-400 hover:text-amber-300",
+        )}
+        title={labelBoxVisible ? "Hide technique box (show only the link)" : "Show technique box"}
+        aria-label={labelBoxVisible ? "Hide technique box" : "Show technique box"}
+        aria-pressed={!labelBoxVisible}
+        onClick={() => onToggleLabelBox()}
+      >
+        {labelBoxVisible ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+      </Button>
+      {canRename && (
+        <Button
+          type="button"
+          size="icon"
+          variant="ghost"
+          className="h-7 w-7 text-gray-300 hover:bg-gray-700 hover:text-white"
+          title="Rename box"
+          aria-label="Rename box"
+          onClick={() => onRename?.()}
+        >
+          <Pencil className="h-4 w-4" />
+        </Button>
+      )}
       <DropdownMenu modal={false} onOpenChange={onMenuOpenChange}>
         <DropdownMenuTrigger asChild>
           <Button
